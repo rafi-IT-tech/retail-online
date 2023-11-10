@@ -5,5 +5,6 @@ create table retail_online.customer (
     email_address varchar(50),
     phone_number varchar(50),
     password varchar(255)
+
 );
 

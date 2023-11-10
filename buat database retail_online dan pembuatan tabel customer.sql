@@ -24,7 +24,7 @@ create table  retail_online.address(
     postal_code varchar(50),
     country_id int ,
     foreign key (country_id)  REFERENCES  country(country_id)
-)
+);
 
 
 create table retail_online.customer_address(
@@ -33,4 +33,44 @@ create table retail_online.customer_address(
     address_id int,
     foreign key (address_id) references  address(address_id),
     is_default boolean
+);
+
+# Tabel promosi
+create  table  retail_online.promotion (
+    promotion_id int primary key  auto_increment,
+    name varchar(50),
+    description varchar(50),
+    discount_rate varchar(50),
+    start_date date,
+    end_date date
+
+);
+
+#product Category
+
+    create table retail_online.product_category(
+        id int primary key  auto_increment,
+        parent_category_id int ,
+        category_name varchar(50)
+
+    );
+
+
+#product
+
+    create table retail_online.product(
+      product_id int primary key  auto_increment ,
+      category_id int,
+      foreign key (category_id) references  retail_online.product_category(id),
+        name varchar(250),
+        description text,
+        product_image varchar(250)
+    );
+
+#promosi category
+create table retail_online.promotion_category(
+    category_id int,
+    foreign key (category_id) references  retail_online.product_category(id),
+    promotion_id int ,
+    foreign key (promotion_id) references retail_online.promotion(promotion_id)
 );

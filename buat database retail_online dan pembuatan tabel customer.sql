@@ -74,3 +74,38 @@ create table retail_online.promotion_category(
     promotion_id int ,
     foreign key (promotion_id) references retail_online.promotion(promotion_id)
 );
+
+
+#product_item
+
+create table retail_online.product_item(
+    product_item_id int primary key  auto_increment,
+    product_id int ,
+    foreign key (product_id) references  retail_online.product(product_id),
+    sku varchar(50),
+    qty_in_stock int ,
+    product_image varchar(250),
+    price int
+);
+
+#membuat table shopping_cart
+
+create table retail_online.shopping_cart(
+    shopping_cart_id int primary key  auto_increment,
+    customer_id int,
+    foreign key (customer_id) references  retail_online.customer(customer_id)
+
+);
+
+
+#membuat tabel shopping_cart_item
+
+create table  retail_online.shopping_cart_item(
+    shopping_cart_item_id int primary key  auto_increment,
+    shopping_cart_id int ,
+    foreign key (shopping_cart_id) references  retail_online.shopping_cart(shopping_cart_id),
+    product_item_id int ,
+    foreign key (product_item_id) references  retail_online.product_item(product_item_id),
+    quantity int
+
+);

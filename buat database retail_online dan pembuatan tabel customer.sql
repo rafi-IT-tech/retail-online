@@ -167,3 +167,14 @@ create  table  retail_online.shop_order(
     foreign key (order_status_id) references retail_online.order_status(order_status_id)
 );
 
+#tabel order_line
+
+create  table  retail_online.order_line(
+    order_line_id int primary key  auto_increment,
+    product_item_id  int ,
+    foreign key (product_item_id) references retail_online.product_item(product_item_id),
+    shop_order_id int ,
+    foreign key (shop_order_id) references  retail_online.shop_order(shop_order_id),
+    quantity int,
+    price int
+);

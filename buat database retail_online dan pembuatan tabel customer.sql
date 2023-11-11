@@ -129,3 +129,41 @@ create table retail_online.shipping_method(
     order_status_id int primary key  auto_increment,
      status boolean
  );
+
+
+#membuat tabel payment_type
+create table retail_online.payment_type(
+     payment_type_id int primary key  auto_increment,
+     value int
+);
+
+
+#membuat customer_payment_method pada transaksi
+
+create table  retail_online.customer_payment_method(
+    customer_payment_method_id int primary key auto_increment,
+    customer_id int,
+    foreign key (customer_id) references  retail_online.customer(customer_id),
+    payment_type_id int ,
+    foreign key (payment_type_id) references retail_online.payment_type(payment_type_id),
+    provider varchar(50),
+    account_number int,
+    expired_date date,
+    is_default date
+);
+
+
+create  table  retail_online.shop_order(
+    shop_order_id int primary key auto_increment,
+    customer_id int ,
+    foreign key (customer_id) references retail_online.customer(customer_id),
+    order_date date,
+    payment_type_id int ,
+    foreign key (payment_type_id) references  retail_online.payment_type(payment_type_id),
+    shipping_method_id int ,
+    foreign key (shipping_method_id) references retail_online.shipping_method(shipping_method_id),
+    order_total int ,
+    order_status_id int ,
+    foreign key (order_status_id) references retail_online.order_status(order_status_id)
+);
+

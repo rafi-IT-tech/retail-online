@@ -98,6 +98,8 @@ create table retail_online.shopping_cart(
 );
 
 
+
+
 #membuat tabel shopping_cart_item
 
 create table  retail_online.shopping_cart_item(

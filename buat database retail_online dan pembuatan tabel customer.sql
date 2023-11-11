@@ -111,3 +111,21 @@ create table  retail_online.shopping_cart_item(
     quantity int
 
 );
+
+
+#membuat tabel shipping_method
+
+create table retail_online.shipping_method(
+    shipping_method_id int primary key  auto_increment,
+    name varchar(50),
+    price int
+
+);
+
+
+#membuat tabel  order status
+
+ create table retail_online.order_status(
+    order_status_id int primary key  auto_increment,
+     status boolean
+ );

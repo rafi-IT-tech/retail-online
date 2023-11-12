@@ -147,11 +147,10 @@ create table  retail_online.customer_payment_method(
     payment_type_id int ,
     foreign key (payment_type_id) references retail_online.payment_type(payment_type_id),
     provider varchar(50),
-    account_number int,
+    account_number varchar(50),
     expired_date date,
-    is_default date
+    is_default BOOLEAN
 );
-
 
 create  table  retail_online.shop_order(
     shop_order_id int primary key auto_increment,
